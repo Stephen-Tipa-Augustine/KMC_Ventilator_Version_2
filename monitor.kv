@@ -1,0 +1,25 @@
+#: import Chart graphs.Chart
+#: include ./card_array.kv
+
+<MonitorScreen>:
+    canvas.before:
+        Color:
+            rgba: 0,0,0,.8
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 2
+        padding: 2
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 2
+            spacing: 1
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 1
+                Chart:
+
+            CardArray:

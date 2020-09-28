@@ -1,0 +1,24 @@
+#: include ./monitor.kv
+#: include ./drawer_content.kv
+
+
+Screen:
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Bulamu Ventilator"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state(new_state='open')]]
+
+                    MonitorScreen:
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            enable_swiping: True
+            size_hint_x: .7
+            ContentNavigationDrawer:
+                screen: nav_drawer

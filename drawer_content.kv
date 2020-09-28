@@ -1,0 +1,434 @@
+#: import AddMargin layoutmargin.AddMargin
+#: import Image kivy.uix.image.Image
+
+<ItemForCustomBottomSheet@OneLineIconListItem>
+    on_press: app.custom_sheet.dismiss()
+    icon: ""
+
+    IconLeftWidget:
+        icon: root.icon
+
+
+<LabelButton>:
+    font_size: 30
+<MyChip@MDChip+ButtonBehavior>:
+
+<MyCard@MDCard+>:
+    orientation: 'vertical'
+    padding: 2
+    spacing: 4
+    focus_behavior: True
+    ripple_behavior: True
+    elevation: 5
+
+
+<ContentNavigationDrawer>:
+    ScrollView:
+        BoxLayout:
+            orientation: 'vertical'
+            MDBoxLayout:
+                adaptive_height: True
+                orientation: 'vertical'
+                SmartTileWithLabel:
+                    source: "./assets/images/nav_drawer_header.png"
+                MDLabel:
+                    text: "Change the parameters using below controls"
+                    color: app.theme_cls.accent_color
+                    halign: 'center'
+                    size_hint_y: .1
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 2
+                spacing: 2
+                MDGridLayout:
+                    cols: 2
+                    padding: 10
+                    adaptive_height: True
+                    spacing: 7
+                ## The first row in the bottom sheet
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'IE Ratio'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=ie_ratio)
+                            LabelButton:
+                                id: ie_ratio
+                                text: "1:8"
+                                halign: 'center'
+                                on_release: print('Label acting as a button')
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=ie_ratio)
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Breaths per Minute'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=breaths_per_minute)
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                spacing: 3
+                                padding: 2
+                                LabelButton:
+                                    id: breaths_per_minute
+                                    text: "30"
+                                    halign: 'center'
+                                    on_release: print('Label acting as a button')
+                                MDLabel:
+                                    text: "BPM"
+                                    halign: 'center'
+                                    size_hint_y: .1
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=breaths_per_minute)
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Tidal Volume'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=tidal_volume)
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                spacing: 3
+                                padding: 2
+                                LabelButton:
+                                    id: tidal_volume
+                                    text: "450"
+                                    halign: 'center'
+                                    on_release: print('Label acting as a button')
+                                MDLabel:
+                                    text: "mm"
+                                    halign: 'center'
+                                    size_hint_y: .1
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=tidal_volume)
+                    ## The second row in the bottom sheet
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'PEEP'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=peep)
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                spacing: 3
+                                padding: 2
+                                LabelButton:
+                                    id: peep
+                                    text: "7"
+                                    halign: 'center'
+                                    on_release: print('Label acting as a button')
+                                MDLabel:
+                                    text: "cmH20"
+                                    halign: 'center'
+                                    size_hint_y: .1
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=peep)
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Pressure Limit'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=pressure_limit)
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                spacing: 3
+                                padding: 2
+                                LabelButton:
+                                    id: pressure_limit
+                                    text: "39"
+                                    halign: 'center'
+                                    on_release: print('Label acting as a button')
+                                MDLabel:
+                                    text: "cmH20"
+                                    halign: 'center'
+                                    size_hint_y: .1
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=pressure_limit)
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 4
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Assist trigger'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            adaptive_height: True
+                            spacing: 3
+                            padding: 2
+                            MDFloatingActionButton:
+                                icon: "minus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='decrement', widget=assist_trigger)
+                            MDBoxLayout:
+                                orientation: 'vertical'
+                                spacing: 3
+                                padding: 2
+                                LabelButton:
+                                    id: assist_trigger
+                                    text: "8"
+                                    halign: 'center'
+                                    on_release: print('Label acting as a button')
+                                MDLabel:
+                                    text: "cmH20"
+                                    halign: 'center'
+                                    size_hint_y: .1
+                            MDFloatingActionButton:
+                                icon: "plus"
+                                md_bg_color: app.theme_cls.primary_color
+                                on_release: root.numeric_buttons_callback(button_type='increment', widget=assist_trigger)
+
+                    ## The third row
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 8
+                        spacing: 10
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Assist'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 1
+                            size_hint_y: 1
+                            spacing: 30
+                            padding: 5
+                            adaptive_height: True
+                            MDChooseChip:
+                                halign: 'center'
+                                MDChip:
+                                    icon: 'check-bold'
+                                    label: 'ON'
+                                    selected_chip_color: 0,1,0,1
+                                MDChip:
+                                    icon: 'close-circle-outline'
+                                    label: 'OFF'
+                                    selected_chip_color: 1,0,0,1
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 8
+                        spacing: 10
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Ventilator Alarms'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 1
+                            spacing: 2
+                            padding: 3
+                            adaptive_height: True
+                            MDRoundFlatIconButton:
+                                icon: 'bell-alert'
+                                md_bg_color: app.theme_cls.primary_color
+                                text_color: 1,1,1,1
+                                text: 'Alerts'
+                                on_release: print('ventilator Alerms')
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 8
+                        spacing: 10
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Ventilator ON/OFF'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 1
+                            size_hint_y: 1
+                            spacing: 30
+                            padding: 5
+                            adaptive_height: True
+                            MDChooseChip:
+                                halign: 'center'
+                                MDChip:
+                                    icon: 'check-bold'
+                                    label: 'ON'
+                                    selected_chip_color: 0,1,0,1
+                                MDChip:
+                                    icon: 'close-circle-outline'
+                                    label: 'OFF'
+                                    selected_chip_color: 1,0,0,1
+                    ## The fourth row
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        padding: 8
+                        spacing: 10
+                        adaptive_height: True
+                        canvas.before:
+                            Color:
+                                rgba: 1,.2,1,.5
+                            Rectangle:
+                                size: self.size
+                                pos: self.pos
+                        MDLabel:
+                            text: 'Inspiration Pause'
+                            halign: 'center'
+                            font_size: 20
+                        MDGridLayout:
+                            cols: 3
+                            size_hint_y: 1
+                            spacing: 30
+                            padding: 5
+                            adaptive_height: True
+                            MDChooseChip:
+                                halign: 'center'
+                                MDChip:
+                                    icon: 'check-bold'
+                                    label: 'ON'
+                                    selected_chip_color: 0,1,0,1
+                                MDChip:
+                                    icon: 'close-circle-outline'
+                                    label: 'OFF'
+                                    selected_chip_color: 1,0,0,1
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: 8
+                    spacing: 10
+                    adaptive_height: True
+                    canvas.before:
+                        Color:
+                            rgba: 1,.2,1,.5
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    MDLabel:
+                        text: 'Committing Changes'
+                        halign: 'center'
+                        font_size: 20
+                    MDGridLayout:
+                        cols: 1
+                        spacing: 2
+                        padding: 3
+                        adaptive_height: True
+                        MDRoundFlatIconButton:
+                            id: commitTipsButton
+                            icon: 'help-rhombus-outline'
+                            md_bg_color: app.theme_cls.primary_color
+                            text_color: 1,1,1,1
+                            text: 'See Tips'
+                            on_release: root.tap_target_start()
+
+                BoxLayout:
