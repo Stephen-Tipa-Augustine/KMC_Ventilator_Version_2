@@ -52,16 +52,21 @@ class Chart(MDBoxLayout):
         self.add_widget(self.pressure_graph)
         self.add_widget(self.flow_graph)
         self.add_widget(self.volume_graph)
-        Clock.schedule_interval(self.get_value, 0.05)
+        # Clock.schedule_interval(self.get_value, 0.05)
+        threading.Thread(target=self.get_value, args=(0.05, ), daemon=True).start()
 
     def stop(self):
         Clock.unschedule(self.get_value)
 
-    def get_value(self, dt):
-        self.update_axis()
-        self.plot_pressure.points = [(x, self.data['pressure'][i]) for i, x in enumerate(self.data['time'])]
-        self.plot_flow.points = [(x, self.data['flow'][i]) for i, x in enumerate(self.data['time'])]
-        self.plot_volume.points = [(x, self.data['volume'][i]) for i, x in enumerate(self.data['time'])]
+    def get_value(self, delay=.05):
+        while True:
+            self.update_axis()
+            self.plot_pressure.points = [(x, self.data['pressure'][i]) for i, x in enumerate(self.data['time'])]
+            self.plot_flow.points = [(x, self.data['flow'][i]) for i, x in enumerate(self.data['time'])]
+            self.plot_volume.points = [(x, self.data['volume'][i]) for i, x in enumerate(self.data['time'])]
+
+            # Make the program sleep before resuming the iteration
+            time.sleep(delay)
 
     def update_axis(self, *args):
         # Modifying the x-axis
