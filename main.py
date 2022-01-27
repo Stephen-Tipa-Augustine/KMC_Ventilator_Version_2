@@ -17,10 +17,9 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.list import OneLineIconListItem, MDList
 from kivymd.uix.selectioncontrol import MDSwitch
 from kivymd.uix.taptargetview import MDTapTargetView
-from layoutmargin import AddMargin
 
 
-class MyLabel(MDLabel, AddMargin):
+class MyLabel(MDLabel):
     pass
 
 class MySwitch(Switch, ButtonBehavior):
